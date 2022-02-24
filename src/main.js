@@ -1,4 +1,38 @@
-import { createApp } from 'vue'
+import {
+    createApp
+} from 'vue'
+import {
+    createStore
+} from 'vuex'
+
+const store = createStore({
+    state: {
+        moviesToDisplay: ["Spider-Man 1", "Iron-Man 3", "Captain America: Civil War"]
+    },
+    mutations: {
+        setMoviesToDisplay(state, payload) {
+            state.moviesToDisplay = payload;
+        }
+    },
+    actions: {
+        async getPopularMovies(state) {
+            const movies = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=c40032dade4d1a42e0a2b3b831b512d1", {
+                Accept: "application/json"
+            })
+            const moviesArr = await movies.json();
+            state.commit("setMoviesToDisplay", moviesArr)
+        }
+    },
+    modules: {},
+    getters: {
+        getAllMovies: state => state.moviesToDisplay
+    }
+})
+
+
+
 import App from './App.vue'
 
-createApp(App).mount('#app')
+let app = createApp(App)
+app.use(store)
+app.mount('#app')
