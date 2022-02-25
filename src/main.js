@@ -7,7 +7,7 @@ import {
 
 const store = createStore({
     state: {
-        moviesToDisplay: ["Spider-Man 1", "Iron-Man 3", "Captain America: Civil War"]
+        moviesToDisplay: []
     },
     mutations: {
         setMoviesToDisplay(state, payload) {
@@ -20,7 +20,7 @@ const store = createStore({
                 Accept: "application/json"
             })
             const moviesArr = await movies.json();
-            state.commit("setMoviesToDisplay", moviesArr)
+            state.commit("setMoviesToDisplay", moviesArr.results)
         }
     },
     modules: {},

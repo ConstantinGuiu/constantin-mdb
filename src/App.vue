@@ -25,4 +25,5 @@ export default {
 
 <style lang="scss">
 @import "@/static/scss/main.scss";
+@import "@/static/scss/movie-thumbs.scss";
 </style>

@@ -1,20 +1,23 @@
 <template>
   <div id="movies-main">
-    <div id="movie-card" v-for="(movie, index) in moviesToDisplay" :key="index">
-      {{movie}}
-    </div>
+    <MovieThumb id="movie-card" v-for="(movie, index) in theMovies" :key="index" :movie="movie" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
+import MovieThumb from "./MovieThumb.vue";
+
 export default {
+  components: { MovieThumb },
   data() {
     return {};
   },
   computed: {
-    moviesToDisplay() {
-      return this.$store.getters.getAllMovies;
-    },
+    ...mapGetters({ theMovies: "getAllMovies" }),
+  },
+  methods: {
   },
 };
 </script>

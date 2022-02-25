@@ -2,7 +2,7 @@
   <div id="filters-main">
     <div id="filters-content" :class="{ visible: visibleFilters }">
       <p>This is the {{ componentName }} component</p>
-      <button id="getPopularBtn" v-on:click="getPopular">Get Popular</button>
+      <button id="getPopularBtn" v-on:click="getPopularMovies">Get Popular</button>
       <button
         id="hide-filters"
         :class="{ rotate: visibleFilters }"
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
 export default {
   data() {
     return {
@@ -25,13 +26,14 @@ export default {
       visibleFilters: false,
     };
   },
+  created(){
+    this.getPopularMovies()
+  },
   methods: {
     toggleFilters() {
       this.visibleFilters = !this.visibleFilters;
     },
-    getPopular() {
-      this.$store.dispatch("getPopularMovies");
-    },
+    ...mapActions(["getPopularMovies"])
   },
 };
 </script>
