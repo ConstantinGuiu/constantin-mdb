@@ -3,44 +3,78 @@ $layout-breakpoint-2: 700px;
 $layout-breakpoint-3: 900px;
 $layout-breakpoint-4: 1200px;
 
-#movies-main{
-    column-gap: 20px;
-    display: grid;
-    grid-template-columns: 90%;
-    padding: 0 20px;
-    justify-content: center;
-    row-gap: 20px;
-    #movie-card {
-        margin: auto;
-        width: 100%;
-        #movie-thumb-img {
-            width: 100%;
-        }
+#movies-main {
+  column-gap: 20px;
+  display: grid;
+  grid-template-columns: 90%;
+  padding: 0 20px;
+  justify-content: center;
+  row-gap: 20px;
+  #movie-card {
+    margin: auto;
+    width: 100%;
+    #movie-thumb-img {
+      width: 100%;
     }
+    #movie-info-container {
+      height: 0;
+      #movie-info {
+        opacity: 0;
+        background-color: black;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.8) 50%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        transition-duration: .3s;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 150px;
+        transform: translateY(-150px);
+        width: 100%;
+      }
+    }
+    &:hover {
+      #movie-info-container {
+        #movie-info {
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: $layout-breakpoint-1) {
-    #movies-main {
-        grid-template-columns: 45% 45%;
+  #movies-main {
+    grid-template-columns: 45% 45%;
+    #movie-card {
     }
+  }
 }
 
 @media (min-width: $layout-breakpoint-2) {
-    #movies-main {
-        grid-template-columns: 200px 200px 200px;
+  #movies-main {
+    grid-template-columns: 200px 200px 200px;
+    #movie-card {
     }
+  }
 }
 
 @media (min-width: $layout-breakpoint-3) {
-    #movies-main {
-        max-width: 1000px;
-        grid-template-columns: 23% 23% 23% 23%;
+  #movies-main {
+    max-width: 1000px;
+    grid-template-columns: 23% 23% 23% 23%;
+    #movie-card {
     }
+  }
 }
 
 @media (min-width: $layout-breakpoint-4) {
-    #movies-main {
-        margin-left: 5vw;
-        margin-right: 5vw;
-    }
+  #movies-main {
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
 }

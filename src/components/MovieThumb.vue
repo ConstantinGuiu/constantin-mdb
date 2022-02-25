@@ -5,9 +5,11 @@
       :src="'https://image.tmdb.org/t/p/w500' + info.poster_path"
       @load="imageLoaded"
     />
-    <div id="movie-info">
-        <p>{{info.title}}</p>
-      <button v-on:click="consoleInfo">Console</button>
+    <div id="movie-info-container">
+      <div id="movie-info">
+        <p>{{ info.title }}</p>
+        <button v-on:click="consoleInfo">Console</button>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +27,7 @@ export default {
   },
   methods: {
     consoleInfo() {
-        console.log(this.info.title)
+      console.log(this.info.title);
     },
     getMovieDetails() {
       fetch(
@@ -34,9 +36,9 @@ export default {
         .then((response) => response.json())
         .then((data) => (this.info = data));
     },
-    imageLoaded(){
-        this.$emit("imageLoaded", this.movie.id)
-    }
+    imageLoaded() {
+      this.$emit("imageLoaded", this.movie.id);
+    },
   },
 };
 </script>
