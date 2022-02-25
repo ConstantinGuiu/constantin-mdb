@@ -2,7 +2,10 @@
   <div id="filters-main">
     <div id="filters-content" :class="{ visible: visibleFilters }">
       <p>This is the {{ componentName }} component</p>
-      <button id="getPopularBtn" v-on:click="getPopularMovies">Get Popular</button>
+      <button class="getCategoryBtn" v-on:click="getPopularMovies">Popular</button>
+      <button class="getCategoryBtn" v-on:click="getNowPlayingMovies">Playing now</button>
+      <button class="getCategoryBtn" v-on:click="getUpcomingMovies">Upcoming</button>
+      <button class="getCategoryBtn" v-on:click="getTopRatedMovies">Top rated</button>
       <button
         id="hide-filters"
         :class="{ rotate: visibleFilters }"
@@ -33,7 +36,7 @@ export default {
     toggleFilters() {
       this.visibleFilters = !this.visibleFilters;
     },
-    ...mapActions(["getPopularMovies"])
+    ...mapActions(["getPopularMovies","getNowPlayingMovies","getUpcomingMovies","getTopRatedMovies"])
   },
 };
 </script>
